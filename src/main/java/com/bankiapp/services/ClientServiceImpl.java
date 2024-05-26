@@ -23,6 +23,7 @@ public class ClientServiceImpl implements ClientService {
         client.setTelephone(dto.getTelephone());
         client.setLastName(dto.getLastName());
         client.setFirstName(dto.getFirstName());
+        client.setBirthDay(dto.getBirthDay());
 
         this.repository.save(client);
     }

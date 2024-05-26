@@ -1,6 +1,7 @@
 package com.bankiapp.entities;
 
 import com.bankiapp.enums.AccountStatus;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -22,6 +23,7 @@ import java.util.Date;
 public abstract class  CompteBancaire implements Serializable {
     @Serial
     private static final long serialVersionUID = -8885817712041252438L;
+
     @Id @GeneratedValue(strategy =GenerationType.AUTO)
     long id;
     private String numCompte;
@@ -31,6 +33,7 @@ public abstract class  CompteBancaire implements Serializable {
     private AccountStatus status;
     @ManyToOne
     private Client client;
+    @JsonBackReference
     @OneToMany(mappedBy = "compte", fetch = FetchType.LAZY)
     private Collection<Operation> operations = new ArrayList<>();
 }
