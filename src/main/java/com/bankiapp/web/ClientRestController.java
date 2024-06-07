@@ -9,19 +9,15 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api/v1")
+@CrossOrigin("*")
 public class ClientRestController {
     final private ClientService clientService;
     ClientRestController(final ClientService clientService) {
         this.clientService = clientService;
     }
     @PostMapping("/clients")
-    public String  createClient(@RequestBody ClientDTO dto){
-        try{
-            this.clientService.createClient(dto);
-            return  "successful created";
-        }catch (Exception e) {
-            return  "error:" + e.getMessage();
-        }
+    public Client  createClient(@RequestBody ClientDTO dto){
+        return this.clientService.createClient(dto);
     }
 
     @GetMapping("/clients")

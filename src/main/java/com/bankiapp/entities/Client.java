@@ -1,6 +1,8 @@
 package com.bankiapp.entities;
 
+import com.bankiapp.enums.AccountStatus;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,6 +12,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -22,8 +25,9 @@ public class Client implements Serializable {
     private  String lastName;
     private String email;
     private String telephone;
-    private Date birthDay;
+    @JsonFormat(pattern="yyyy-MM-dd")
+    private Date birthday;
     @JsonBackReference
-    @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
-    Collection<CompteBancaire> comptes = new ArrayList<>();
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<AccountBank> comptes = new ArrayList<>();
 }

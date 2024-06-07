@@ -1,27 +1,23 @@
-package com.bankiapp.entities;
+package com.bankiapp.dto;
 
+import com.bankiapp.entities.AccountBank;
 import com.bankiapp.enums.TypeOperation;
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
 import java.util.Date;
 
-@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Operation implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+public class OperationDto {
     private long id;
     private Date dateOperation;
-    private String numOperation;
     private double amount;
-    @Enumerated(EnumType.STRING)
     private TypeOperation type;
-    @ManyToOne
     private AccountBank compte;
+    private String  numCompte;
+    private String  numCompteD;
+    private String  numCompteS;
 }

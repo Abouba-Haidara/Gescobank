@@ -14,5 +14,5 @@ public class ClientDTO {
     private  String lastName;
     private String email;
     private String telephone;
-    private Date birthDay;
+    private String birthday;
 }
