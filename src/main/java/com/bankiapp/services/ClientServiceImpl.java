@@ -14,13 +14,11 @@ import java.util.List;
 public class ClientServiceImpl implements ClientService {
     private final ClientRepository repository;
 
-    private final EmailService emailService;
+
     ClientServiceImpl(
-            final ClientRepository repository,
-            final EmailService emailService
+            final ClientRepository repository
     ) {
         this.repository = repository;
-        this.emailService=emailService;
     }
 
     @Override
@@ -41,9 +39,7 @@ public class ClientServiceImpl implements ClientService {
         client.setBirthday(date);
 
         return this.repository.save(client);
-       /*emailService.sendNotificationEmail(dto.getEmail(),
-                "Notification, Création de Compte",
-                "Bonjour cher client");*/
+
     }
 
     @Override

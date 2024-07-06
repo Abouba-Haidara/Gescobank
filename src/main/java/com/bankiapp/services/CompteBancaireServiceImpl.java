@@ -17,17 +17,21 @@ public class CompteBancaireServiceImpl implements CompteBancaireService{
 
     private final CompteBancaireRepository bancaireRepository;
     private final ClientRepository clientRepository;
+
+    private final EmailService emailService;
     CompteBancaireServiceImpl(
             final CompteBancaireRepository bancaireRepository,
-            final ClientRepository clientRepository
+            final ClientRepository clientRepository,
+            final EmailService emailService
             ) {
         this.bancaireRepository = bancaireRepository;
         this.clientRepository = clientRepository;
+        this.emailService =emailService;
     }
 
     @Override
     public void createCompte(CompteBancaireDTO dto) {
-        Client client;
+        Client client = null;
         boolean isPresent = this.clientRepository.findById(dto.getClientId()).isPresent();
 
         if(isPresent && dto.getDecouvert() == 0 && dto.getTauxInteret() > 0 ) {
@@ -39,8 +43,18 @@ public class CompteBancaireServiceImpl implements CompteBancaireService{
          compteEpargne.setBalance(dto.getBalance());
          compteEpargne.setTauxInteret(dto.getTauxInteret());
          compteEpargne.setStatus(AccountStatus.ACTIVATED);
-         compteEpargne.setNumCompte(generateAccountNumber());
+         compteEpargne.setNumCompte(generateAccountNumber(5));
          this.bancaireRepository.save(compteEpargne);
+            emailService.sendNotificationEmail(client.getEmail(),
+                    "Notification, Création de Compte,",
+                    "Bonjour cher client: "
+                            + client.getFirstName() + " "
+                            + client.getLastName()  + " " +
+                            "Vous avez créé un compte, pour accéder à votre espace et pour suivre" +
+                            " Votre inscription voici vos crendentials de connexion:" +
+                            "LOGIN: " +client.getEmail() +
+                            " Mot de passe: "+generateAccountNumber(6)
+            );
         }
 
         if(isPresent && dto.getTauxInteret()  == 0 && dto.getDecouvert() > 0)
@@ -53,9 +67,22 @@ public class CompteBancaireServiceImpl implements CompteBancaireService{
             compteCourant.setCreatedAt(new Date());
             compteCourant.setDecouvert(dto.getDecouvert());
             compteCourant.setStatus(AccountStatus.ACTIVATED);
-            compteCourant.setNumCompte(generateAccountNumber());
+            compteCourant.setNumCompte(generateAccountNumber(5));
             this.bancaireRepository.save(compteCourant);
+
+            emailService.sendNotificationEmail(client.getEmail(),
+                    "Notification, Création de Compte,",
+                    "Bonjour cher client: "
+                            + client.getFirstName() + " "
+                            + client.getLastName()  + " " +
+                            "Vous avez créé un compte, pour accéder à votre espace et pour suivre" +
+                            " Votre inscription voici vos crendentials de connexion:" +
+                            "LOGIN: " +client.getEmail() +
+                            " Mot de passe: "+generateAccountNumber(6)
+            );
         }
+
+
     }
 
     @Override
@@ -122,7 +149,7 @@ public class CompteBancaireServiceImpl implements CompteBancaireService{
     }
 
 
-    private static String generateAccountNumber() {
+    private static String generateAccountNumber(int n) {
         Random random = new Random();
         StringBuilder sb = new StringBuilder();
         // Les 4 premiers chiffres sont 0
@@ -134,7 +161,7 @@ public class CompteBancaireServiceImpl implements CompteBancaireService{
             sb.append(random.nextInt(2));
         }
         // Les 5 derniers chiffres sont générés aléatoirement
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < n; i++) {
             sb.append(random.nextInt(10));
         }
         return sb.toString();

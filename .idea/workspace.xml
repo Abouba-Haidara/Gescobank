@@ -5,31 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83f60d13-7594-4f95-a941-1687aab3b833" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bankiapp/dto/OperationDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bankiapp/entities/AccountBank.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bankiapp/services/EmailService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bankiapp/services/OperationServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bankiapp/web/OperationRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bankiapp/dto/ClientDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bankiapp/dto/ClientDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bankiapp/entities/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bankiapp/entities/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bankiapp/entities/CompteBancaire.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bankiapp/entities/CompteCourant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bankiapp/entities/CompteCourant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bankiapp/entities/CompteEpargne.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bankiapp/entities/CompteEpargne.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bankiapp/entities/Operation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bankiapp/entities/Operation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bankiapp/enums/AccountStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bankiapp/enums/AccountStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bankiapp/repositories/ClientRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bankiapp/repositories/ClientRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bankiapp/repositories/CompteBancaireRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bankiapp/repositories/CompteBancaireRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bankiapp/repositories/OperationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bankiapp/repositories/OperationRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bankiapp/services/ClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bankiapp/services/ClientService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/bankiapp/services/ClientServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bankiapp/services/ClientServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bankiapp/services/CompteBancaireService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bankiapp/services/CompteBancaireService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/bankiapp/services/CompteBancaireServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bankiapp/services/CompteBancaireServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bankiapp/services/OperationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bankiapp/services/OperationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bankiapp/web/ClientRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bankiapp/web/ClientRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bankiapp/web/CompteBancaireRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bankiapp/web/CompteBancaireRestController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
     </list>
@@ -115,6 +93,9 @@
       <workItem from="1717430880950" duration="32019000" />
       <workItem from="1717604839690" duration="8150000" />
       <workItem from="1717659712214" duration="4179000" />
+      <workItem from="1718021971744" duration="5908000" />
+      <workItem from="1719227280627" duration="17882000" />
+      <workItem from="1719656910070" duration="588000" />
     </task>
     <servers />
   </component>
