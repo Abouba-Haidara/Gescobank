@@ -2,21 +2,21 @@ package com.bankiapp.services;
 
 import com.bankiapp.dto.ClientDTO;
 import com.bankiapp.entities.Client;
-import com.bankiapp.repositories.ClientRepository;
+import com.bankiapp.entities.Person;
+import com.bankiapp.repositories.PersonRepository;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Service
 public class ClientServiceImpl implements ClientService {
-    private final ClientRepository repository;
-
-
+    private final PersonRepository repository;
     ClientServiceImpl(
-            final ClientRepository repository
+            final PersonRepository repository
     ) {
         this.repository = repository;
     }
@@ -24,7 +24,6 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public Client createClient(ClientDTO dto) {
         Client client = new Client();
-
         client.setEmail(dto.getEmail());
         client.setTelephone(dto.getTelephone());
         client.setLastName(dto.getLastName());
@@ -37,18 +36,33 @@ public class ClientServiceImpl implements ClientService {
             date = null;
         }
         client.setBirthday(date);
-
         return this.repository.save(client);
-
     }
 
     @Override
     public List<Client> getAllClient() {
-        return this.repository.findAll();
+        List<Client> clients = new ArrayList<>();
+        for(Person p: this.repository.findAll())
+            if(p instanceof  Client) clients.add((Client) p);
+        return clients;
     }
 
     @Override
     public Client getClientById(long id) {
-        return this.repository.findById(id).get();
+        Person p = this.repository.findById(id).orElse(null);
+        if(p instanceof  Client)  return (Client) p;
+        return null;
+    }
+
+    @Override
+    public List<Client> searchClientsByKeywords(String keyword) {
+       List<Client> clients =  new ArrayList<>();
+       for(Person p:this.repository.findByFirstNameContaining(keyword))
+       {
+           if(p instanceof  Client) {
+               clients.add((Client) p);
+           }
+       }
+     return  clients;
     }
 }

@@ -15,6 +15,7 @@ public interface CompteBancaireService {
   CompteCourant findCompteCourant(String numCompte);
   AccountBank suspendCompte(String numCompte);
   AccountBank activeCompte(String numCompte);
-
+  List<AccountBank> findAllCompteClientById(long id);
+  List<AccountBank> findAllComptesCreatedByEmployeeById(long id);
 
 }

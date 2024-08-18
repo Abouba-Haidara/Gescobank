@@ -6,7 +6,7 @@ import com.bankiapp.entities.Client;
 import com.bankiapp.entities.CompteCourant;
 import com.bankiapp.entities.CompteEpargne;
 import com.bankiapp.enums.AccountStatus;
-import com.bankiapp.repositories.ClientRepository;
+import com.bankiapp.repositories.PersonRepository;
 import com.bankiapp.repositories.CompteBancaireRepository;
 import org.springframework.stereotype.Service;
 
@@ -16,26 +16,26 @@ import java.util.*;
 public class CompteBancaireServiceImpl implements CompteBancaireService{
 
     private final CompteBancaireRepository bancaireRepository;
-    private final ClientRepository clientRepository;
+    private final PersonRepository personRepository;
 
     private final EmailService emailService;
     CompteBancaireServiceImpl(
             final CompteBancaireRepository bancaireRepository,
-            final ClientRepository clientRepository,
+            final PersonRepository personRepository,
             final EmailService emailService
             ) {
         this.bancaireRepository = bancaireRepository;
-        this.clientRepository = clientRepository;
+        this.personRepository = personRepository;
         this.emailService =emailService;
     }
 
     @Override
     public void createCompte(CompteBancaireDTO dto) {
         Client client = null;
-        boolean isPresent = this.clientRepository.findById(dto.getClientId()).isPresent();
+        boolean isPresent = this.personRepository.findById(dto.getClientId()).isPresent();
 
         if(isPresent && dto.getDecouvert() == 0 && dto.getTauxInteret() > 0 ) {
-         client =  this.clientRepository.getReferenceById(dto.getClientId());
+         client =  this.personRepository.getReferenceById(dto.getClientId());
          CompteEpargne compteEpargne = new  CompteEpargne();
          compteEpargne.setClient(client);
          compteEpargne.setCreatedAt(new Date());
@@ -59,7 +59,7 @@ public class CompteBancaireServiceImpl implements CompteBancaireService{
 
         if(isPresent && dto.getTauxInteret()  == 0 && dto.getDecouvert() > 0)
         {
-            client =  this.clientRepository.getReferenceById(dto.getClientId());
+            client =  this.personRepository.getReferenceById(dto.getClientId());
             CompteCourant compteCourant = new CompteCourant();
             compteCourant.setClient(client);
             compteCourant.setBalance(dto.getBalance());

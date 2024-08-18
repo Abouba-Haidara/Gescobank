@@ -9,4 +9,5 @@ public interface ClientService {
     Client createClient(ClientDTO dto);
     List<Client> getAllClient();
     Client getClientById(long id);
+    List<Client> searchClientsByKeywords(String keyword);
 }

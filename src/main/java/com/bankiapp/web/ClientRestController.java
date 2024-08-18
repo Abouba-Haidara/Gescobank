@@ -19,12 +19,10 @@ public class ClientRestController {
     public Client  createClient(@RequestBody ClientDTO dto){
         return this.clientService.createClient(dto);
     }
-
     @GetMapping("/clients")
     List<Client> findAll() {
         return this.clientService.getAllClient();
     }
-
     @GetMapping("/clients/{id}")
     Client findAll(@PathVariable("id") long id) {
         try {
